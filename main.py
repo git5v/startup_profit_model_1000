@@ -30,6 +30,7 @@ df = pd.read_csv("1000_Companies.csv")
 # y = dataset.iloc[:, 4].values
 
 def drop_outliers(train,columns):
+            # dropping outlier which and keeping the data only to 25 - 75 percentile  
     iqr=1.5+(np.percentile(train[columns],75)-np.percentile(train[columns],25))
     df.drop(train[train[columns]>(iqr+np.percentile(train[columns],75))].index,inplace=True)
     df.drop(train[train[columns]<(np.percentile(train[columns],25)-iqr)].index,inplace=True)
